@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles/userHomePage.css";
-import Footer from "../components/footer";
-
+import Footer from "../components/UserFooter";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 function UserHomePage() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -25,10 +25,18 @@ function UserHomePage() {
     <div className="container">
       <nav className="main-nav">
         <div className="nav-left">
-          <span>🐦</span>
-          <span>📸</span>
-          <span>📘</span>
-          <span>▶️</span>
+          <span>
+            <FaTwitter />
+          </span>
+          <span>
+            <FaInstagram />
+          </span>
+          <span>
+            <FaFacebook />
+          </span>
+          <span>
+            <FaYoutube />
+          </span>
         </div>
         <div className="nav-center">
           <h1 className="nav-logo">SAMASTA KHABAR</h1>
@@ -130,39 +138,6 @@ function UserHomePage() {
           <p className="date">{formatDate(currentDate)}</p>
         </div>
       </section>
-
-      <footer className="user-footer">
-  <div className="footer-columns">
-    <div>
-      <h4>SAMASTA KHABAR</h4>
-      <p>Download our App</p>
-      <div className="stores">
-        <img src="https://picsum.photos/80/40?random=20" alt="Play Store" />
-        <img src="https://picsum.photos/80/40?random=21" alt="App Store" />
-      </div>
-    </div>
-    <div>
-      <h4>Quick Links</h4>
-      <p>Home</p>
-      <p>Politics</p>
-      <p>Sports</p>
-    </div>
-    <div>
-      <h4>Company</h4>
-      <p>About Us</p>
-      <p>Contact Us</p>
-      <p>Advertise</p>
-    </div>
-    <div>
-      <h4>Follow Us</h4>
-      <div className="socials">
-        <span>🐦</span>
-        <span>📸</span>
-        <span>📘</span>
-      </div>
-    </div>
-  </div>
-</footer>
       <Footer />
     </div>
   );

@@ -1,10 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaFacebookF, FaApple, FaGoogle } from "react-icons/fa";
 import "./styles/loginPage.css";
-import Footer from "../components/footer";
-
 
 const LoginPage = () => {
+  const [formData, setFormData] = useState({
+    identifier: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // for navigation after login
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.identifier.trim()) {
+      newErrors.identifier = "Email or phone is required.";
+    }
+
+    if (!formData.password.trim()) {
+      newErrors.password = "Password is required.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validate()) {
+      alert("Login successful!");
+      navigate("/user"); // redirect on successful login
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-box">
@@ -12,20 +47,55 @@ const LoginPage = () => {
         <h2 className="heading">LOGIN TO YOUR ACCOUNT</h2>
         <p className="subtext">Sign In to Get the Latest Updates</p>
 
-        <div className="login-content">
-          <div className="login-left">
-            <input type="text" placeholder="Email / Phone" className="input" />
-            <input type="password" placeholder="Password" className="input" />
-            <Link to="/user" className="login-button">
-              Login to Your Account →
-            </Link>          </div>
+        <form onSubmit={handleSubmit}>
+          <div className="login-content">
+            <div className="login-left">
+              <div>
+                <input
+                  type="text"
+                  name="identifier"
+                  placeholder="Email / Phone"
+                  className="input"
+                  onChange={handleChange}
+                />
+                {errors.identifier && (
+                  <p className="error-text">{errors.identifier}</p>
+                )}
+              </div>
 
-          <div className="login-right">
-            <button className="social-button">G Sign in with Gmail</button>
-            <button className="social-button">f Sign in with Facebook</button>
-            <button className="social-button"> Sign in with Apple</button>
+              <div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="input"
+                  onChange={handleChange}
+                />
+                {errors.password && (
+                  <p className="error-text">{errors.password}</p>
+                )}
+              </div>
+
+              <button type="submit" className="login-button">
+                Login to Your Account →
+              </button>
+            </div>
+
+            <div className="login-right">
+              <button type="button" className="social-button">
+                <FaGoogle style={{ marginRight: "8px" }} /> Sign in with Gmail
+              </button>
+              <button type="button" className="social-button">
+                <FaFacebookF style={{ marginRight: "8px" }} /> Sign in with
+                Facebook
+              </button>
+
+              <button type="button" className="social-button">
+                <FaApple style={{ marginRight: "8px" }} /> Sign in with Apple
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
 
         <div className="extras">
           <p className="forgot">Forgot Passcode?</p>
@@ -34,7 +104,6 @@ const LoginPage = () => {
             Sign up
           </Link>
         </div>
-        <Footer />
       </div>
     </div>
   );
