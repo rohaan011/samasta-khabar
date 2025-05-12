@@ -1,0 +1,8 @@
+.bot-footer {
+  background-color: #222;
+  color: white;
+  font-family: "Old Standard TT";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

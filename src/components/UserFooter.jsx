@@ -27,7 +27,7 @@ const UserFooter = () => {
           <p>About Us</p>
           <p>Advertise</p>
           <p>Contact Us</p>
-          <p>Advertise</p>
+          <p>Terms & Conditions</p>
         </div>
 
         <div>

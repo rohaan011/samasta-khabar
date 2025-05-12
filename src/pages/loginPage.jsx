@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaApple, FaGoogle } from "react-icons/fa";
-import "./styles/loginPage.css";
+import "./styles/LoginPage.css";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({

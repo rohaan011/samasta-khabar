@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles/signupPage.css";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
     confirmPassword: "",
     role: "",
   });
+
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
 
@@ -23,10 +25,10 @@ const SignupPage = () => {
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First name is required.";
-    if (!formData.lastName.trim())
-      newErrors.lastName = "Last name is required.";
+    if (!formData.first_name.trim())
+      newErrors.first_name = "First name is required.";
+    if (!formData.last_name.trim())
+      newErrors.last_name = "Last name is required.";
     if (!formData.email) newErrors.email = "Email is required.";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "Invalid email address.";
@@ -41,11 +43,30 @@ const SignupPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log("submit");
+    console.log(formData);
     e.preventDefault();
     if (validate()) {
+      console.log(formData);
       alert("Form submitted successfully!");
-      // Submit logic here (e.g., API call)
+      const apiEndPoint = `http://localhost:3000/api/`;
+
+      let response = await fetch(apiEndPoint + `${formData.role}s/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(response);
+
+      let json = await response.json();
+
+      if (json.success == true) {
+        navigate(`/${formData.role}`);
+      }
     }
   };
 
@@ -64,25 +85,25 @@ const SignupPage = () => {
               <div>
                 <input
                   type="text"
-                  name="firstName"
+                  name="first_name"
                   placeholder="First name"
                   className="input"
                   onChange={handleChange}
                 />
-                {errors.firstName && (
-                  <p className="error-text">{errors.firstName}</p>
+                {errors.first_name && (
+                  <p className="error-text">{errors.first_name}</p>
                 )}
               </div>
               <div>
                 <input
                   type="text"
-                  name="lastName"
+                  name="last_name"
                   placeholder="Last name"
                   className="input"
                   onChange={handleChange}
                 />
-                {errors.lastName && (
-                  <p className="error-text">{errors.lastName}</p>
+                {errors.last_name && (
+                  <p className="error-text">{errors.last_name}</p>
                 )}
               </div>
             </div>
