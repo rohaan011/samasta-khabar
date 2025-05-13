@@ -8,6 +8,8 @@ import UserHomePage from "./pages/userHomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ReporterHomePage from "./pages/reporterHomePage.jsx";
 import UserNewsArticle from "./pages/UserNewsArtice.jsx";
+import ReporterPostPage from "./pages/ReporterPostPage.jsx";
+import AdminApprovalPage from "./pages/AdminApprovalPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,6 +20,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/user" element={<UserHomePage />} />
         <Route path="/reporter" element={<ReporterHomePage />} />
         <Route path="/usernewsarticle" element={<UserNewsArticle />} />
+        <Route path="/reporternews" element={<ReporterPostPage />} />
+        <Route path="/approval" element={<AdminApprovalPage />} />
       </Routes>
     </Router>
   </StrictMode>

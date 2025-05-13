@@ -5,7 +5,7 @@ import "./styles/LoginPage.css";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
-    identifier: "",
+    email: "",
     password: "",
   });
 
@@ -20,8 +20,8 @@ const LoginPage = () => {
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.identifier.trim()) {
-      newErrors.identifier = "Email or phone is required.";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email or phone is required.";
     }
 
     if (!formData.password.trim()) {
@@ -32,11 +32,34 @@ const LoginPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validate()) {
-      alert("Login successful!");
-      navigate("/user"); // redirect on successful login
+      try {
+        const apiEndPoint = `http://localhost:3000/api`;
+
+        const response = await fetch(apiEndPoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const json = await response.json();
+        console.log(json);
+
+        if (json.success === true) {
+          alert("Login successful!");
+          navigate("/user"); // navigate to user dashboard or homepage
+        } else {
+          alert(json.message || "Invalid credentials.");
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        alert("An error occurred during login. Please try again later.");
+      }
     }
   };
 
@@ -52,15 +75,13 @@ const LoginPage = () => {
             <div className="login-left">
               <div>
                 <input
-                  type="text"
-                  name="identifier"
+                  type="email"
+                  name="email"
                   placeholder="Email / Phone"
                   className="input"
                   onChange={handleChange}
                 />
-                {errors.identifier && (
-                  <p className="error-text">{errors.identifier}</p>
-                )}
+                {errors.email && <p className="error-text">{errors.email}</p>}
               </div>
 
               <div>
