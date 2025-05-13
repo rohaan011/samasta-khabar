@@ -3,7 +3,7 @@ import UserHeader from "../components/UserHeader";
 import "./styles/UserNewsArticle.css";
 import UserFooter from "../components/UserFooter";
 
-export default function UserNewsArticle() {
+function UserNewsArticle() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -53,3 +53,5 @@ export default function UserNewsArticle() {
     </>
   );
 }
+
+export default UserNewsArticle;
