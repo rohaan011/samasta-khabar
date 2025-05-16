@@ -31,6 +31,71 @@
   height: 250px;
 }
 
+/*Latest Section */
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.user-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.user-post-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-post-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.user-post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-category-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 4px 12px;
+  border-radius: 15px;
+  color: white;
+  font-size: 18px;
+  background-color: #5248c5;
+}
+
+.user-post-date {
+  padding: 15px 15px 5px;
+  display: flex;
+  align-items: center;
+  color: #777;
+  font-size: 14px;
+}
+
+.user-calendar-icon {
+  margin-right: 5px;
+}
+
+.user-post-title {
+  padding: 0 15px 15px;
+  font-size: 24px;
+  line-height: 1.4;
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  margin: 0;
+}
+
 .photo-of-day {
   text-align: center;
   margin-top: 40px;

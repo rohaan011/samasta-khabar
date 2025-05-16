@@ -105,20 +105,20 @@ function UserHomePage() {
       <section className="latest-news-section">
         <h2 className="section-title">Latest News</h2>
 
-        <div className="posts-grid">
+        <div className="user-posts-grid">
           {POSTS.map((post) => (
-            <div key={post.id} className="post-card">
-              <div className="post-image">
+            <div key={post.id} className="user-post-card">
+              <div className="user-post-image">
                 <img src={post.image} alt={post.alt} />
-                <span className={`category-badge ${post.categoryClass}`}>
+                <span className={`user-category-badge ${post.categoryClass}`}>
                   {post.category}
                 </span>
               </div>
-              <div className="post-date">
-                <span className="calendar-icon">📅</span>
+              <div className="user-post-date">
+                <span className="user-calendar-icon">📅</span>
                 {post.date}
               </div>
-              <h3 className="post-title">{post.title}</h3>
+              <h3 className="user-post-title">{post.title}</h3>
             </div>
           ))}
         </div>
