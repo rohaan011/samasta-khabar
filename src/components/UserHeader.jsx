@@ -47,7 +47,6 @@ function UserHeader() {
           <button className="search-button">
             <IoSearch />
           </button>
-          <button className="signin-button">Sign In</button>
         </div>
       </nav>
 
