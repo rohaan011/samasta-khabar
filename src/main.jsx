@@ -9,7 +9,7 @@ import UserNewsArticle from "./pages/UserNewsArtice.jsx";
 import ReporterPostPage from "./pages/ReporterPostPage.jsx";
 import AdminApprovalPage from "./pages/AdminApprovalPage.jsx";
 import AdminHomepage from "./pages/AdminHomePage.jsx";
-import LoginPage from "./pages/loginPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/signupPage.jsx";
 
 createRoot(document.getElementById("root")).render(

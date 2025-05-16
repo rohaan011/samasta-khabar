@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles/ReporterPostPage.css";
+import { LuImagePlus } from "react-icons/lu";
 
 const ReporterPostPage = () => {
   const [articleData, setArticleData] = useState({
@@ -44,7 +45,9 @@ const ReporterPostPage = () => {
         <div className="image-upload">
           <label htmlFor="image">
             <div className="upload-box">
-              <span className="upload-icon">📷+</span>
+              <span className="upload-icon">
+                <LuImagePlus />
+              </span>
               <p>Upload from computer</p>
             </div>
           </label>

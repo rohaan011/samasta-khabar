@@ -39,7 +39,7 @@ const LoginPage = () => {
       try {
         const apiEndPoint = `http://localhost:3000/api`;
 
-        const response = await fetch(apiEndPoint, {
+        const response = await fetch(apiEndPoint + `${formData.role}s/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const LoginPage = () => {
 
         if (json.success === true) {
           alert("Login successful!");
-          navigate("/user"); // navigate to user dashboard or homepage
+          navigate(`/${formData.role}`);
         } else {
           alert(json.message || "Invalid credentials.");
         }
@@ -66,9 +66,9 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h1 className="logo">SAMASTA KHABAR</h1>
-        <h2 className="heading">LOGIN TO YOUR ACCOUNT</h2>
-        <p className="subtext">Sign In to Get the Latest Updates</p>
+        <h1 className="login-logo">SAMASTA KHABAR</h1>
+        <h2 className="login-heading">LOGIN TO YOUR ACCOUNT</h2>
+        <p className="login-subtext">Sign In to Get the Latest Updates</p>
 
         <form onSubmit={handleSubmit}>
           <div className="login-content">
@@ -78,7 +78,7 @@ const LoginPage = () => {
                   type="email"
                   name="email"
                   placeholder="Email / Phone"
-                  className="input"
+                  className="login-input"
                   onChange={handleChange}
                 />
                 {errors.email && <p className="error-text">{errors.email}</p>}
@@ -89,7 +89,7 @@ const LoginPage = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
-                  className="input"
+                  className="login-input"
                   onChange={handleChange}
                 />
                 {errors.password && (
@@ -103,25 +103,25 @@ const LoginPage = () => {
             </div>
 
             <div className="login-right">
-              <button type="button" className="social-button">
+              <button type="button" className="login-social-button">
                 <FaGoogle style={{ marginRight: "8px" }} /> Sign in with Gmail
               </button>
-              <button type="button" className="social-button">
+              <button type="button" className="login-social-button">
                 <FaFacebookF style={{ marginRight: "8px" }} /> Sign in with
                 Facebook
               </button>
 
-              <button type="button" className="social-button">
+              <button type="button" className="login-social-button">
                 <FaApple style={{ marginRight: "8px" }} /> Sign in with Apple
               </button>
             </div>
           </div>
         </form>
 
-        <div className="extras">
+        <div className="login-extra">
           <p className="forgot">Forgot Passcode?</p>
           <p className="signup-prompt">Don’t have an account?</p>
-          <Link to="/" className="signup-button">
+          <Link to="/signup" className="login-signup-button">
             Sign up
           </Link>
         </div>

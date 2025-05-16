@@ -101,6 +101,7 @@ function UserHomePage() {
           alt="Photo of the Day"
         />
       </section>
+
       <section className="latest-news-section">
         <h2 className="section-title">Latest News</h2>
 

@@ -1,13 +1,14 @@
+import { useState } from "react";
 import "./styles/ReporterHomePage.css";
 import person from "../assets/person.png";
 import { LuImagePlus } from "react-icons/lu";
 import { PiArticleNyTimesLight } from "react-icons/pi";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import BottomFooter from "../components/BottomFooter";
-
-const POSTS = [
+import TopHeader from "../components/TopHeader";
+import ReporterPostPage from "./ReporterPostPage";
+const ALL_POSTS = [
   {
-    id: 1,
     image:
       "https://assets-cdn.kathmandupost.com/uploads/source/news/2023/news/polutionphoto-1699320782.jpg",
     alt: "Air pollution in Kathmandu",
@@ -15,9 +16,9 @@ const POSTS = [
     categoryClass: "health",
     date: "10 March 2025",
     title: "AIR POLLUTION LEVELS RISE AGAIN IN KATHMANDU VALLEY",
+    status: "new",
   },
   {
-    id: 2,
     image: "https://farsightnepal.com/media/photos/F6tLmLdbUAASrhe.jpg",
     alt: "Prime Minister visit to China",
     category: "Politics",
@@ -25,9 +26,9 @@ const POSTS = [
     date: "10 March 2025",
     title:
       "PRIME MINISTER EMBARKS ON OFFICIAL VISIT TO CHINA, SIGNS FIVE NEW AGREEMENTS",
+    status: "approved",
   },
   {
-    id: 3,
     image:
       "https://www.orfonline.org/public/uploads/posts/image/1734773995_img-Nepal-hydro.jpg",
     alt: "Hydropower sector",
@@ -36,10 +37,31 @@ const POSTS = [
     date: "10 March 2025",
     title:
       "FOREIGN INVESTORS SHOW RENEWED INTEREST IN NEPAL'S HYDROPOWER SECTOR",
+    status: "rejected",
+  },
+  {
+    image:
+      "https://www.orfonline.org/public/uploads/posts/image/1734773995_img-Nepal-hydro.jpg",
+    alt: "Hydropower sector",
+    category: "Business",
+    categoryClass: "business",
+    date: "10 March 2025",
+    title:
+      "FOREIGN INVESTORS SHOW RENEWED INTEREST IN NEPAL'S HYDROPOWER SECTOR",
+    status: "rejected",
   },
 ];
 
+const postCounts = {
+  new: ALL_POSTS.filter((p) => p.status === "new").length,
+  approved: ALL_POSTS.filter((p) => p.status === "approved").length,
+  rejected: ALL_POSTS.filter((p) => p.status === "rejected").length,
+};
+
 const ReporterHomePage = () => {
+  // 🔴 State for overlay visibility
+  const [showOverlay, setShowOverlay] = useState(false);
+
   const currentDate = new Date();
 
   const formatDate = (date) => {
@@ -49,48 +71,21 @@ const ReporterHomePage = () => {
       year: "numeric",
     });
   };
+
+  const openOverlay = () => {
+    setShowOverlay(true);
+  };
+
+  const closeOverlay = () => {
+    setShowOverlay(false);
+  };
+  const [activeTab, setActiveTab] = useState("new");
+
+  const filteredPosts = ALL_POSTS.filter((post) => post.status === activeTab);
   return (
     <div className="container">
       <div className="samasta-khabar">
-        <nav className="main-nav">
-          <div className="nav-left">
-            <span>
-              <FaTwitter />
-            </span>
-            <span>
-              <FaInstagram />
-            </span>
-            <span>
-              <FaFacebook />
-            </span>
-            <span>
-              <FaYoutube />
-            </span>
-          </div>
-          <div className="nav-center">
-            <h1 className="nav-logo">SAMASTA KHABAR</h1>
-          </div>
-          <div className="nav-right">
-            <p className="nav-date">{formatDate(currentDate)}</p>
-            <button className="search-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </button>
-            <button className="signin-button">Sign In</button>
-          </div>
-        </nav>
+        <TopHeader />
 
         {/* User Profile Banner */}
         <div className="profile-banner">
@@ -99,7 +94,7 @@ const ReporterHomePage = () => {
 
         <div className="profile-container">
           <div className="profile-image-container">
-            <img src={person} alt="Google Play" className="profile-image" />
+            <img src={person} alt="Profile" className="profile-image" />
             <h2 className="profile-name">Rohan Prajapati</h2>
           </div>
           <button className="edit-profile-btn">Edit Profile</button>
@@ -108,15 +103,17 @@ const ReporterHomePage = () => {
         {/* Create Post Section */}
         <div className="create-post-container">
           <div className="create-post-box">
-            <div className="post-input">Create a post...</div>
+            <div className="post-input" onClick={openOverlay}>
+              Create a post...
+            </div>
             <div className="post-actions">
-              <button className="media-btn">
+              <button className="media-btn" onClick={openOverlay}>
                 <span className="media-icon">
                   <LuImagePlus size={18} />
                 </span>
                 Media
               </button>
-              <button className="write-article-btn">
+              <button className="write-article-btn" onClick={openOverlay}>
                 <span className="article-icon">
                   <PiArticleNyTimesLight size={22} />
                 </span>
@@ -130,26 +127,65 @@ const ReporterHomePage = () => {
         <section className="my-posts-section">
           <h2 className="section-title">MY POSTS</h2>
 
+          {/* Tabs */}
+          <div className="tabs">
+            <button
+              className={`tab-btn ${activeTab === "my" ? "active" : ""}`}
+              onClick={() => setActiveTab("new")}
+            >
+              New News
+            </button>
+            <button
+              className={`tab-btn ${activeTab === "approved" ? "active" : ""}`}
+              onClick={() => setActiveTab("approved")}
+            >
+              Approved News
+            </button>
+            <button
+              className={`tab-btn ${activeTab === "rejected" ? "active" : ""}`}
+              onClick={() => setActiveTab("rejected")}
+            >
+              Rejected News
+            </button>
+          </div>
+
+          {/* Posts Display */}
           <div className="posts-grid">
-            {POSTS.map((post) => (
-              <div key={post.id} className="post-card">
-                <div className="post-image">
-                  <img src={post.image} alt={post.alt} />
-                  <span className={`category-badge ${post.categoryClass}`}>
-                    {post.category}
-                  </span>
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map((post) => (
+                <div key={post.id} className="post-card">
+                  <div className="post-image">
+                    <img src={post.image} alt={post.alt} />
+                    <span className={`category-badge ${post.categoryClass}`}>
+                      {post.category}
+                    </span>
+                  </div>
+                  <div className="post-date">
+                    <span className="calendar-icon">📅</span> {post.date}
+                  </div>
+                  <h3 className="post-title">{post.title}</h3>
                 </div>
-                <div className="post-date">
-                  <span className="calendar-icon">📅</span>
-                  {post.date}
-                </div>
-                <h3 className="post-title">{post.title}</h3>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p className="no-posts">No posts available.</p>
+            )}
           </div>
         </section>
+
         <BottomFooter />
       </div>
+
+      {/* Overlay */}
+      {showOverlay && (
+        <div className="overlay">
+          <div className="overlay-content">
+            <button className="close-btn" onClick={closeOverlay}>
+              ×
+            </button>
+            <ReporterPostPage />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

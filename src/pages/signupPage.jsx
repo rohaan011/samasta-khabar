@@ -73,10 +73,10 @@ const SignupPage = () => {
   return (
     <div className="signup-container">
       <div className="signup-box">
-        <h1 className="logo">SAMASTA KHABAR</h1>
-        <h2 className="heading">CREATE AN ACCOUNT</h2>
+        <h1 className="signup-logo">SAMASTA KHABAR</h1>
+        <h2 className="signup-heading">CREATE AN ACCOUNT</h2>
         <p className="subtext">
-          Already have an account? <Link to="/login">Log in</Link>
+          Already have an account? <Link to="/">Log in</Link>
         </p>
 
         <form onSubmit={handleSubmit}>

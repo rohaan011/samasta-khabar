@@ -9,37 +9,26 @@
 .hero {
   display: flex;
   margin-top: 20px;
+  gap: 20px;
 }
 
 .hero-main {
   flex: 2;
-  margin-right: 20px;
+}
+
+.hero-main .post-image {
+  height: 82%;
 }
 
 .hero-side {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.hero-main img,
-.hero-side img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.tag {
-  color: #555;
-  font-weight: bold;
-  margin-top: 8px;
-}
-
-.date {
-  color: gray;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-.side-card {
-  margin-bottom: 20px;
+.hero-side .post-image {
+  height: 250px;
 }
 
 .photo-of-day {
