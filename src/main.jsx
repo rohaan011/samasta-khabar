@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./index.css";
-import UserHomePage from "./pages/userHomePage.jsx";
+import UserHomePage from "./pages/UserHomePage.jsx";
 import ReporterHomePage from "./pages/reporterHomePage.jsx";
 import UserNewsArticle from "./pages/UserNewsArtice.jsx";
 import ReporterPostPage from "./pages/ReporterPostPage.jsx";
@@ -11,6 +11,7 @@ import AdminApprovalPage from "./pages/AdminApprovalPage.jsx";
 import AdminHomepage from "./pages/AdminHomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/signupPage.jsx";
+import Weather from "./components/Weather.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/reporternews" element={<ReporterPostPage />} />
         <Route path="/approval" element={<AdminApprovalPage />} />
         <Route path="/admin" element={<AdminHomepage />} />
+        <Route path="/weather" element={<Weather />} />
       </Routes>
     </Router>
   </StrictMode>

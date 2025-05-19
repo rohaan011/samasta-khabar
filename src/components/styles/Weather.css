@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Old+Standard+TT:wght@400;700&display=swap");
+
+.weather-container {
+  font-size: 20px;
+}
+
+h1 {
+  font-family: "Bebas Neue";
+  font-size: 48px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+.weather-container {
+  font-family: "Old Standard TT";
+}
+
+.weather-search {
+  align-items: center;
+}
+
+.weather-search-box {
+  padding: 10px;
+  font-family: "Old Standard TT";
+  border-radius: 16px;
+  font-size: 20px;
+}
+
+.weather-search-button {
+  vertical-align: middle;
+  font-size: 32px;
+  background: none;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.weather-temp {
+  font-size: 48px;
+  margin-top: 0;
+  margin-bottom: 0;
+}

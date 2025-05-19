@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./styles/UserHomePage.css";
 import UserFooter from "../components/UserFooter";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { IoSearch } from "react-icons/io5";
 import UserHeader from "../components/UserHeader";
+import Weather from "../components/Weather";
 
 function UserHomePage() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -87,7 +86,7 @@ function UserHomePage() {
       category: "Health",
       categoryClass: "health",
       date: "10 March 2025",
-      title: "AIR POLLUTION LEVELS RISE AGAIN IN KATHMANDU VALLEY",
+      title: "AIEY",
     },
     {
       id: 2,
@@ -97,10 +96,13 @@ function UserHomePage() {
       category: "Business",
       categoryClass: "business",
       date: "10 March 2025",
-      title:
-        "FOREIGN INVESTORS SHOW RENEWED INTEREST IN NEPAL'S HYDROPOWER SECTOR",
+      title: "FOREIGN SECTOR",
     },
   ];
+  const api = {
+    key: "cd0ba1a5d5c3f451ea789947f8617bb1",
+    base: "https://api.openweathermap.org/data/2.5/",
+  };
 
   return (
     <div className="container">
@@ -172,21 +174,7 @@ function UserHomePage() {
       </section>
 
       <section className="weather-fun">
-        <div className="weather">
-          <h4>Weather Today</h4>
-          <p>Kathmandu, Nepal</p>
-          <h2>15°</h2>
-          <p>Feels like 17°</p>
-        </div>
-        <div className="fun">
-          <h4>Fun Time</h4>
-          <p>Would you rather...</p>
-          <ul>
-            <li>Give up your phone for a week</li>
-            <li>Or the internet for a day?</li>
-          </ul>
-          <p className="date">{formatDate(currentDate)}</p>
-        </div>
+        <Weather />
       </section>
       <UserFooter />
     </div>
