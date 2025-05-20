@@ -6,16 +6,6 @@
   border-bottom: 1px solid #ddd;
 }
 
-.nav-left span {
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-.nav-left svg {
-  margin-right: 15px;
-  cursor: pointer;
-}
-
 .nav-center .nav-logo {
   font-family: "Bebas Neue", cursive;
   font-size: 48px;
@@ -31,15 +21,6 @@
 .nav-date {
   margin-right: 20px;
   font-size: 14px;
-}
-
-.search-button,
-.signin-button {
-  background: none;
-  border: none;
-  margin-left: 10px;
-  cursor: pointer;
-  font-size: 16px;
 }
 
 .category-nav {

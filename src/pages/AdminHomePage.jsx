@@ -3,6 +3,7 @@ import "./styles/AdminHomePage.css";
 import BottomFooter from "../components/BottomFooter";
 import TopHeader from "../components/TopHeader";
 import { ImNewspaper } from "react-icons/im";
+import PostsCard from "../components/PostsCard";
 
 const ALL_POSTS = [
   {
@@ -93,12 +94,12 @@ const AdminHomePage = () => {
 
         {/* My Posts Section */}
         <section className="my-posts-section">
-          <h2 className="section-title">MY POSTS</h2>
+          <h2 className="section-title">POSTS</h2>
 
           {/* Tabs */}
           <div className="tabs">
             <button
-              className={`tab-btn ${activeTab === "my" ? "active" : ""}`}
+              className={`tab-btn ${activeTab === "new" ? "active" : ""}`}
               onClick={() => setActiveTab("new")}
             >
               New News
@@ -118,26 +119,7 @@ const AdminHomePage = () => {
           </div>
 
           {/* Posts Display */}
-          <div className="posts-grid">
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((post) => (
-                <div key={post.id} className="post-card">
-                  <div className="post-image">
-                    <img src={post.image} alt={post.alt} />
-                    <span className={`category-badge ${post.categoryClass}`}>
-                      {post.category}
-                    </span>
-                  </div>
-                  <div className="post-date">
-                    <span className="calendar-icon">📅</span> {post.date}
-                  </div>
-                  <h3 className="post-title">{post.title}</h3>
-                </div>
-              ))
-            ) : (
-              <p className="no-posts">No posts available.</p>
-            )}
-          </div>
+          <PostsCard posts={filteredPosts} />
         </section>
 
         <BottomFooter />

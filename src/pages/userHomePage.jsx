@@ -3,6 +3,7 @@ import "./styles/UserHomePage.css";
 import UserFooter from "../components/UserFooter";
 import UserHeader from "../components/UserHeader";
 import Weather from "../components/Weather";
+import PostsCard from "../components/PostsCard";
 
 function UserHomePage() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -154,27 +155,54 @@ function UserHomePage() {
       <section className="latest-news-section">
         <h2 className="user-section-title">Latest News</h2>
 
-        <div className="user-posts-grid">
-          {POSTS.map((post) => (
-            <div key={post.id} className="user-post-card">
-              <div className="user-post-image">
-                <img src={post.image} alt={post.alt} />
-                <span className={`user-category-badge ${post.categoryClass}`}>
-                  {post.category}
-                </span>
-              </div>
-              <div className="user-post-date">
-                <span className="user-calendar-icon">📅</span>
-                {post.date}
-              </div>
-              <h3 className="user-post-title">{post.title}</h3>
-            </div>
-          ))}
-        </div>
+        <PostsCard posts={POSTS} />
       </section>
 
       <section className="weather-fun">
         <Weather />
+      </section>
+
+      <section className="Politics-news-section">
+        <h2 className="user-section-title">Politics</h2>
+        <PostsCard
+          posts={POSTS.filter((post) => post.category === "Politics")}
+        />
+      </section>
+
+      <section className="Business-news-section">
+        <h2 className="user-section-title">Business</h2>
+        <PostsCard
+          posts={POSTS.filter((post) => post.category === "Business")}
+        />
+      </section>
+
+      <section className="Health-news-section">
+        <h2 className="user-section-title">Health</h2>
+        <PostsCard posts={POSTS.filter((post) => post.category === "Health")} />
+      </section>
+
+      <section className="Sports-news-section">
+        <h2 className="user-section-title">Sports</h2>
+        <PostsCard posts={POSTS.filter((post) => post.category === "Sports")} />
+      </section>
+
+      <section className="Technology-news-section">
+        <h2 className="user-section-title">Technology</h2>
+        <PostsCard
+          posts={POSTS.filter((post) => post.category === "Technology")}
+        />
+      </section>
+
+      <section className="World-news-section">
+        <h2 className="user-section-title">World</h2>
+        <PostsCard posts={POSTS.filter((post) => post.category === "World")} />
+      </section>
+
+      <section className="Lifestyle-news-section">
+        <h2 className="user-section-title">Lifestyle</h2>
+        <PostsCard
+          posts={POSTS.filter((post) => post.category === "Lifestyle")}
+        />
       </section>
       <UserFooter />
     </div>

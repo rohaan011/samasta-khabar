@@ -3,10 +3,12 @@ import "./styles/ReporterHomePage.css";
 import person from "../assets/person.png";
 import { LuImagePlus } from "react-icons/lu";
 import { PiArticleNyTimesLight } from "react-icons/pi";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import BottomFooter from "../components/BottomFooter";
 import TopHeader from "../components/TopHeader";
 import ReporterPostPage from "./ReporterPostPage";
+import PostsCard from "../components/PostsCard";
+import { IoClose } from "react-icons/io5";
+
 const ALL_POSTS = [
   {
     image:
@@ -52,14 +54,7 @@ const ALL_POSTS = [
   },
 ];
 
-const postCounts = {
-  new: ALL_POSTS.filter((p) => p.status === "new").length,
-  approved: ALL_POSTS.filter((p) => p.status === "approved").length,
-  rejected: ALL_POSTS.filter((p) => p.status === "rejected").length,
-};
-
 const ReporterHomePage = () => {
-  // 🔴 State for overlay visibility
   const [showOverlay, setShowOverlay] = useState(false);
 
   const currentDate = new Date();
@@ -86,18 +81,19 @@ const ReporterHomePage = () => {
     <div className="container">
       <div className="samasta-khabar">
         <TopHeader />
-
-        {/* User Profile Banner */}
-        <div className="profile-banner">
-          <div className="geometric-pattern" />
-        </div>
-
-        <div className="profile-container">
-          <div className="profile-image-container">
-            <img src={person} alt="Profile" className="profile-image" />
-            <h2 className="profile-name">Rohan Prajapati</h2>
+        <div>
+          {/* User cover image */}
+          <div className="cover-image">
+            <img src="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2017/08/facebook-cover-photo-header.jpg" />
           </div>
-          <button className="edit-profile-btn">Edit Profile</button>
+
+          <div className="profile-container">
+            <div className="profile-image-container">
+              <img src={person} alt="Profile" className="profile-image" />
+              <h2 className="profile-name">Rohan Prajapati</h2>
+            </div>
+            <button className="edit-profile-btn">Edit Profile</button>
+          </div>
         </div>
 
         {/* Create Post Section */}
@@ -130,7 +126,7 @@ const ReporterHomePage = () => {
           {/* Tabs */}
           <div className="tabs">
             <button
-              className={`tab-btn ${activeTab === "my" ? "active" : ""}`}
+              className={`tab-btn ${activeTab === "new" ? "active" : ""}`}
               onClick={() => setActiveTab("new")}
             >
               New News
@@ -150,26 +146,7 @@ const ReporterHomePage = () => {
           </div>
 
           {/* Posts Display */}
-          <div className="posts-grid">
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((post) => (
-                <div key={post.id} className="post-card">
-                  <div className="post-image">
-                    <img src={post.image} alt={post.alt} />
-                    <span className={`category-badge ${post.categoryClass}`}>
-                      {post.category}
-                    </span>
-                  </div>
-                  <div className="post-date">
-                    <span className="calendar-icon">📅</span> {post.date}
-                  </div>
-                  <h3 className="post-title">{post.title}</h3>
-                </div>
-              ))
-            ) : (
-              <p className="no-posts">No posts available.</p>
-            )}
-          </div>
+          <PostsCard posts={filteredPosts} />
         </section>
 
         <BottomFooter />
@@ -180,7 +157,7 @@ const ReporterHomePage = () => {
         <div className="overlay">
           <div className="overlay-content">
             <button className="close-btn" onClick={closeOverlay}>
-              ×
+              <IoClose />
             </button>
             <ReporterPostPage />
           </div>

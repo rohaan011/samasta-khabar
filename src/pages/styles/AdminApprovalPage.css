@@ -61,3 +61,31 @@
   line-height: 1.6;
   font-size: 1rem;
 }
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.approve-button,
+.reject-button {
+  font-family: "Old Standard TT";
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.approve-button {
+  background-color: #008000;
+  color: white;
+}
+
+.reject-button {
+  background-color: #ff0000;
+  color: white;
+}

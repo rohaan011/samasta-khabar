@@ -26,16 +26,16 @@ function UserHeader() {
       <nav className="main-nav">
         <div className="nav-left">
           <span>
-            <FaTwitter size={32} />
+            <FaTwitter size={20} />
           </span>
           <span>
-            <FaInstagram size={32} />
+            <FaInstagram size={20} />
           </span>
           <span>
-            <FaFacebook size={32} />
+            <FaFacebook size={20} />
           </span>
           <span>
-            <FaYoutube size={32} />
+            <FaYoutube size={20} />
           </span>
         </div>
 

@@ -44,10 +44,6 @@ function TopHeader() {
         </div>
         <div className="nav-right">
           <p className="nav-date">{formatDate(currentDate)}</p>
-          <button className="search-button">
-            <IoSearch />
-          </button>
-          <button className="signin-button">Sign In</button>
         </div>
       </nav>
     </div>
