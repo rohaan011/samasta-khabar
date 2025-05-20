@@ -108,7 +108,7 @@ function UserHomePage() {
   return (
     <div className="container">
       <UserHeader />
-      <section className="hero">
+      <section id="home" className="hero">
         <div className="hero-main">
           <div key={mainPost.id} className="user-post-card">
             <div className="user-post-image">
@@ -162,43 +162,43 @@ function UserHomePage() {
         <Weather />
       </section>
 
-      <section className="Politics-news-section">
+      <section id="politics" className="Politics-news-section">
         <h2 className="user-section-title">Politics</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Politics")}
         />
       </section>
 
-      <section className="Business-news-section">
+      <section id="business" className="Business-news-section">
         <h2 className="user-section-title">Business</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Business")}
         />
       </section>
 
-      <section className="Health-news-section">
+      <section id="health" className="Health-news-section">
         <h2 className="user-section-title">Health</h2>
         <PostsCard posts={POSTS.filter((post) => post.category === "Health")} />
       </section>
 
-      <section className="Sports-news-section">
+      <section id="sports" className="Sports-news-section">
         <h2 className="user-section-title">Sports</h2>
         <PostsCard posts={POSTS.filter((post) => post.category === "Sports")} />
       </section>
 
-      <section className="Technology-news-section">
+      <section id="technology" className="Technology-news-section">
         <h2 className="user-section-title">Technology</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Technology")}
         />
       </section>
 
-      <section className="World-news-section">
+      <section id="world" className="World-news-section">
         <h2 className="user-section-title">World</h2>
         <PostsCard posts={POSTS.filter((post) => post.category === "World")} />
       </section>
 
-      <section className="Lifestyle-news-section">
+      <section id="lifestyle" className="Lifestyle-news-section">
         <h2 className="user-section-title">Lifestyle</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Lifestyle")}

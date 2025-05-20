@@ -1,14 +1,14 @@
 import { useState } from "react";
-import UserHeader from "../components/UserHeader";
 import "./styles/UserNewsArticle.css";
-import UserFooter from "../components/UserFooter";
+import TopHeader from "../components/TopHeader";
+import BottomFooter from "../components/BottomFooter";
 
 function UserNewsArticle() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <>
-      <UserHeader />
+      <TopHeader />
 
       {/* Main Content */}
       <main className="container">
@@ -48,7 +48,7 @@ function UserNewsArticle() {
             biometric-based National ID card.
           </p>
         </article>
-        <UserFooter />
+        <BottomFooter />
       </main>
     </>
   );

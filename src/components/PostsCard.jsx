@@ -20,7 +20,7 @@ const PostsCard = ({ posts }) => {
           </div>
         ))
       ) : (
-        <p className="no-posts">No posts available.</p>
+        <p className="no-posts">No news available.</p>
       )}
     </div>
   );

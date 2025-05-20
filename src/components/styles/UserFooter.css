@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Old+Standard+TT:wght@400;700&display=swap");
 
+.user-footer {
+  background-color: #f0f0f0; /* light grey background */
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.footer-columns a {
+  text-decoration: none;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  display: block;
+  font-family: "Bebas Neue";
+  font-size: 32px;
+}
+
 .footer-columns {
   font-family: "Bebas Neue";
   font-size: 32px;
@@ -13,10 +32,12 @@
   font-family: "Bebas Neue";
   font-size: 48px;
   text-align: center;
+  margin-top: 0;
 }
 
 .footer-columns div {
   flex: 1;
+  margin-top: 0;
   margin: 10px;
 }
 
@@ -24,13 +45,6 @@
   display: flex;
   gap: 16px;
   align-items: center;
-}
-
-.copy {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 12px;
-  color: #ccc;
 }
 
 .store-icon {
@@ -53,4 +67,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 40px;
+}
+
+.bot-footer p {
+  margin: 0;
 }

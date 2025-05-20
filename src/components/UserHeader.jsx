@@ -51,14 +51,14 @@ function UserHeader() {
       </nav>
 
       <div className="category-nav">
-        <a href="#">Home</a>
-        <a href="#">Politics</a>
-        <a href="#">Business</a>
-        <a href="#">Sports</a>
-        <a href="#">Health</a>
-        <a href="#">Technology</a>
-        <a href="#">World News</a>
-        <a href="#">Lifestyle</a>
+        <a href="#home">Home</a>
+        <a href="#politics">Politics</a>
+        <a href="#business">Business</a>
+        <a href="#sports">Sports</a>
+        <a href="#health">Health</a>
+        <a href="#technology">Technology</a>
+        <a href="#world">World News</a>
+        <a href="#lifestyle">Lifestyle</a>
       </div>
     </div>
   );

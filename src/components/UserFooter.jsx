@@ -17,10 +17,10 @@ const UserFooter = () => {
         </div>
 
         <div>
-          <p>Home</p>
-          <p>Politics</p>
-          <p>Business</p>
-          <p>Sports</p>
+          <a href="#home">Home</a>
+          <a href="#politics">Politics</a>
+          <a href="#business">Business</a>
+          <a href="#sports">Sports</a>
         </div>
 
         <div>
