@@ -4,6 +4,8 @@ import UserFooter from "../components/UserFooter";
 import UserHeader from "../components/UserHeader";
 import Weather from "../components/Weather";
 import PostsCard from "../components/PostsCard";
+import { POSTS, mainPost, sidePosts } from "../utils/posts";
+import { useNavigate } from "react-router-dom";
 
 function UserHomePage() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -23,86 +25,14 @@ function UserHomePage() {
     });
   };
 
-  const POSTS = [
-    {
-      id: 1,
-      image:
-        "https://assets-cdn.kathmandupost.com/uploads/source/news/2023/news/polutionphoto-1699320782.jpg",
-      alt: "Air pollution in Kathmandu",
-      category: "Health",
-      categoryClass: "health",
-      date: "10 March 2025",
-      title: "AIR POLLUTION LEVELS RISE AGAIN IN KATHMANDU VALLEY",
-    },
-    {
-      id: 2,
-      image: "https://farsightnepal.com/media/photos/F6tLmLdbUAASrhe.jpg",
-      alt: "Prime Minister visit to China",
-      category: "Politics",
-      categoryClass: "politics",
-      date: "10 March 2025",
-      title:
-        "PRIME MINISTER EMBARKS ON OFFICIAL VISIT TO CHINA, SIGNS FIVE NEW AGREEMENTS",
-    },
-    {
-      id: 3,
-      image:
-        "https://www.orfonline.org/public/uploads/posts/image/1734773995_img-Nepal-hydro.jpg",
-      alt: "Hydropower sector",
-      category: "Business",
-      categoryClass: "business",
-      date: "10 March 2025",
-      title:
-        "FOREIGN INVESTORS SHOW RENEWED INTEREST IN NEPAL'S HYDROPOWER SECTOR",
-    },
-    {
-      id: 4,
-      image:
-        "https://www.orfonline.org/public/uploads/posts/image/1734773995_img-Nepal-hydro.jpg",
-      alt: "Hydropower sector",
-      category: "Business",
-      categoryClass: "business",
-      date: "10 March 2025",
-      title:
-        "FOREIGN INVESTORS SHOW RENEWED INTEREST IN NEPAL'S HYDROPOWER SECTOR",
-    },
-  ];
-  const mainPost = {
-    id: 1,
-    image:
-      "https://assets-cdn.kathmandupost.com/uploads/source/news/2023/news/polutionphoto-1699320782.jpg",
-    alt: "Air pollution in Kathmandu",
-    category: "Health",
-    categoryClass: "health",
-    date: "10 March 2025",
-    title: "AIR POLLUTION LEVELS RISE AGAIN IN KATHMANDU VALLEY",
-  };
-
-  const sidePosts = [
-    {
-      id: 1,
-      image:
-        "https://assets-cdn.kathmandupost.com/uploads/source/news/2023/news/polutionphoto-1699320782.jpg",
-      alt: "Air pollution in Kathmandu",
-      category: "Health",
-      categoryClass: "health",
-      date: "10 March 2025",
-      title: "AIEY",
-    },
-    {
-      id: 2,
-      image:
-        "https://www.orfonline.org/public/uploads/posts/image/1734773995_img-Nepal-hydro.jpg",
-      alt: "Hydropower sector",
-      category: "Business",
-      categoryClass: "business",
-      date: "10 March 2025",
-      title: "FOREIGN SECTOR",
-    },
-  ];
   const api = {
     key: "cd0ba1a5d5c3f451ea789947f8617bb1",
     base: "https://api.openweathermap.org/data/2.5/",
+  };
+  const navigate = useNavigate();
+
+  const onArticleClick = (id) => {
+    navigate(`/newsarticle/${id}`);
   };
 
   return (
@@ -110,7 +40,11 @@ function UserHomePage() {
       <UserHeader />
       <section id="home" className="hero">
         <div className="hero-main">
-          <div key={mainPost.id} className="user-post-card">
+          <div
+            key={mainPost.id}
+            className="user-post-card"
+            onClick={() => onArticleClick(mainPost.id)}
+          >
             <div className="user-post-image">
               <img src={mainPost.image} alt={mainPost.alt} />
               <span className={`user-category-badge ${mainPost.categoryClass}`}>
@@ -127,7 +61,11 @@ function UserHomePage() {
 
         <div className="hero-side">
           {sidePosts.map((post) => (
-            <div key={post.id} className="user-post-card">
+            <div
+              key={post.id}
+              className="user-post-card"
+              onClick={() => onArticleClick(post.id)}
+            >
               <div className="user-post-image">
                 <img src={post.image} alt={post.alt} />
                 <span className={`user-category-badge ${post.categoryClass}`}>
@@ -155,7 +93,7 @@ function UserHomePage() {
       <section className="latest-news-section">
         <h2 className="user-section-title">Latest News</h2>
 
-        <PostsCard posts={POSTS} />
+        <PostsCard posts={POSTS} onPostClick={onArticleClick} />
       </section>
 
       <section className="weather-fun">
@@ -166,6 +104,7 @@ function UserHomePage() {
         <h2 className="user-section-title">Politics</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Politics")}
+          onPostClick={onArticleClick}
         />
       </section>
 
@@ -173,37 +112,50 @@ function UserHomePage() {
         <h2 className="user-section-title">Business</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Business")}
+          onPostClick={onArticleClick}
         />
       </section>
 
       <section id="health" className="Health-news-section">
         <h2 className="user-section-title">Health</h2>
-        <PostsCard posts={POSTS.filter((post) => post.category === "Health")} />
+        <PostsCard
+          posts={POSTS.filter((post) => post.category === "Health")}
+          onPostClick={onArticleClick}
+        />
       </section>
 
       <section id="sports" className="Sports-news-section">
         <h2 className="user-section-title">Sports</h2>
-        <PostsCard posts={POSTS.filter((post) => post.category === "Sports")} />
+        <PostsCard
+          posts={POSTS.filter((post) => post.category === "Sports")}
+          onPostClick={onArticleClick}
+        />
       </section>
 
       <section id="technology" className="Technology-news-section">
         <h2 className="user-section-title">Technology</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Technology")}
+          onPostClick={onArticleClick}
         />
       </section>
 
       <section id="world" className="World-news-section">
         <h2 className="user-section-title">World</h2>
-        <PostsCard posts={POSTS.filter((post) => post.category === "World")} />
+        <PostsCard
+          posts={POSTS.filter((post) => post.category === "World")}
+          onPostClick={onArticleClick}
+        />
       </section>
 
       <section id="lifestyle" className="Lifestyle-news-section">
         <h2 className="user-section-title">Lifestyle</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Lifestyle")}
+          onPostClick={onArticleClick}
         />
       </section>
+
       <UserFooter />
     </div>
   );

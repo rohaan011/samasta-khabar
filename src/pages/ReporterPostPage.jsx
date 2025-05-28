@@ -8,6 +8,7 @@ const ReporterPostPage = () => {
     content: "",
     category: "",
     image: null,
+    status: "new",
   });
 
   const categories = [

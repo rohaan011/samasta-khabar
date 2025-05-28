@@ -1,12 +1,16 @@
 import React from "react";
 import "../components/styles/PostsCard.css";
 
-const PostsCard = ({ posts }) => {
+const PostsCard = ({ posts, onPostClick }) => {
   return (
     <div className="posts-grid">
       {posts.length > 0 ? (
-        posts.map((post, index) => (
-          <div key={index} className="post-card">
+        posts.map((post) => (
+          <div
+            key={post.id}
+            className="post-card"
+            onClick={() => onPostClick(post.id)}
+          >
             <div className="post-image">
               <img src={post.image} alt={post.alt} />
               <span className={`category-badge ${post.categoryClass}`}>

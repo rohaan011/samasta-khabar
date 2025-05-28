@@ -4,62 +4,23 @@ import BottomFooter from "../components/BottomFooter";
 import TopHeader from "../components/TopHeader";
 import { ImNewspaper } from "react-icons/im";
 import PostsCard from "../components/PostsCard";
-
-const ALL_POSTS = [
-  {
-    image:
-      "https://assets-cdn.kathmandupost.com/uploads/source/news/2023/news/polutionphoto-1699320782.jpg",
-    alt: "Air pollution in Kathmandu",
-    category: "Health",
-    categoryClass: "health",
-    date: "10 March 2025",
-    title: "AIR POLLUTION LEVELS RISE AGAIN IN KATHMANDU VALLEY",
-    status: "new",
-  },
-  {
-    image: "https://farsightnepal.com/media/photos/F6tLmLdbUAASrhe.jpg",
-    alt: "Prime Minister visit to China",
-    category: "Politics",
-    categoryClass: "politics",
-    date: "10 March 2025",
-    title:
-      "PRIME MINISTER EMBARKS ON OFFICIAL VISIT TO CHINA, SIGNS FIVE NEW AGREEMENTS",
-    status: "approved",
-  },
-  {
-    image:
-      "https://www.orfonline.org/public/uploads/posts/image/1734773995_img-Nepal-hydro.jpg",
-    alt: "Hydropower sector",
-    category: "Business",
-    categoryClass: "business",
-    date: "10 March 2025",
-    title:
-      "FOREIGN INVESTORS SHOW RENEWED INTEREST IN NEPAL'S HYDROPOWER SECTOR",
-    status: "rejected",
-  },
-  {
-    image:
-      "https://www.orfonline.org/public/uploads/posts/image/1734773995_img-Nepal-hydro.jpg",
-    alt: "Hydropower sector",
-    category: "Business",
-    categoryClass: "business",
-    date: "10 March 2025",
-    title:
-      "FOREIGN INVESTORS SHOW RENEWED INTEREST IN NEPAL'S HYDROPOWER SECTOR",
-    status: "rejected",
-  },
-];
+import { POSTS, mainPost, sidePosts } from "../utils/posts";
 
 const postCounts = {
-  new: ALL_POSTS.filter((p) => p.status === "new").length,
-  approved: ALL_POSTS.filter((p) => p.status === "approved").length,
-  rejected: ALL_POSTS.filter((p) => p.status === "rejected").length,
+  new: POSTS.filter((p) => p.status === "new").length,
+  approved: POSTS.filter((p) => p.status === "approved").length,
+  rejected: POSTS.filter((p) => p.status === "rejected").length,
 };
 
 const AdminHomePage = () => {
   const [activeTab, setActiveTab] = useState("new");
+  const navigate = useNavigate();
 
   const filteredPosts = ALL_POSTS.filter((post) => post.status === activeTab);
+
+  const handlePostClick = (postId) => {
+    navigate(`/newsarticle/${postId}`);
+  };
 
   return (
     <div className="container">
@@ -119,7 +80,7 @@ const AdminHomePage = () => {
           </div>
 
           {/* Posts Display */}
-          <PostsCard posts={filteredPosts} />
+          <PostsCard posts={filteredPosts} onPostClick={handlePostClick} />
         </section>
 
         <BottomFooter />

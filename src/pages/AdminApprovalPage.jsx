@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UserHeader from "../components/UserHeader";
-import "./styles/UserNewsArticle.css";
+import "./styles/AdminApprovalPage.css";
 import UserFooter from "../components/UserFooter";
 
 function AdminApprovalPage() {
@@ -48,6 +48,10 @@ function AdminApprovalPage() {
             biometric-based National ID card.
           </p>
         </article>
+        <div className="action-buttons">
+          <button className="approve-button">Approve</button>
+          <button className="reject-button">Reject</button>
+        </div>
         <UserFooter />
       </main>
     </>
