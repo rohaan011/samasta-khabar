@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../components/styles/UserHeader.css";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 function UserHeader() {
+  const { t } = useTranslation();
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
@@ -40,25 +43,37 @@ function UserHeader() {
         </div>
 
         <div className="nav-center">
-          <h1 className="nav-logo">SAMASTA KHABAR</h1>
+          <h1 className="nav-logo">{t("header.siteTitle")}</h1>
         </div>
         <div className="nav-right">
           <p className="nav-date">{formatDate(currentDate)}</p>
           <button className="search-button">
             <IoSearch />
           </button>
+          <button
+            onClick={() => i18n.changeLanguage("en")}
+            className="lang-button"
+          >
+            EN
+          </button>
+          <button
+            onClick={() => i18n.changeLanguage("np")}
+            className="lang-button"
+          >
+            NP
+          </button>
         </div>
       </nav>
 
       <div className="category-nav">
-        <a href="#home">Home</a>
-        <a href="#politics">Politics</a>
-        <a href="#business">Business</a>
-        <a href="#sports">Sports</a>
-        <a href="#health">Health</a>
-        <a href="#technology">Technology</a>
-        <a href="#world">World News</a>
-        <a href="#lifestyle">Lifestyle</a>
+        <a href="#home">{t("header.home")}</a>
+        <a href="#politics">{t("header.politics")}</a>
+        <a href="#business">{t("header.business")}</a>
+        <a href="#sports">{t("header.sports")}</a>
+        <a href="#health">{t("header.health")}</a>
+        <a href="#technology">{t("header.technology")}</a>
+        <a href="#world">{t("header.world")}</a>
+        <a href="#lifestyle">{t("header.lifestyle")}</a>
       </div>
     </div>
   );

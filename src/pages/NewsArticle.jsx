@@ -3,9 +3,11 @@ import { POSTS, mainPost, sidePosts } from "../utils/posts";
 import TopHeader from "../components/TopHeader";
 import BottomFooter from "../components/BottomFooter";
 import "./styles/NewsArticle.css";
+import { useTranslation } from "react-i18next";
 
 function NewsArticle() {
   const { id } = useParams();
+  const { t } = useTranslation();
   const post = POSTS.find((item) => String(item.id) === String(id));
 
   if (!post) {
@@ -13,7 +15,7 @@ function NewsArticle() {
       <>
         <TopHeader />
         <main className="container">
-          <h2>Article not found!</h2>
+          <h2>{t("articleNotFound", "Article not found!")}</h2>
         </main>
         <BottomFooter />
       </>
@@ -27,22 +29,28 @@ function NewsArticle() {
       <main className="container">
         <div className="article-category">
           <span className={`article-category bg-${post.categoryClass}`}>
-            {post.category}
+            {t(
+              `posts.categories.${post.category.toLowerCase()}`,
+              post.category
+            )}
           </span>
         </div>
 
-        <div className="article-title">{post.title}</div>
+        <div className="article-title">
+          {t(`posts.${post.id}.title`, post.title)}
+        </div>
 
         <div className="article-image">
           <img src={post.image} alt={post.alt} />
         </div>
+
         <div className="meta">
-          <p>By Samasta Reporter</p>
+          <p>{t("byReporter", "By Samasta Reporter")}</p>
           <p>{post.date}</p>
         </div>
 
         <article className="article-content">
-          <p>{post.content}</p>
+          <p>{t(`posts.${post.id}.content`, post.content)}</p>
         </article>
       </main>
 

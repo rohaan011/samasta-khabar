@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./index.css";
+import "./i18n";
 import UserHomePage from "./pages/UserHomePage.jsx";
 import ReporterHomePage from "./pages/reporterHomePage.jsx";
 import ReporterPostPage from "./pages/ReporterPostPage.jsx";

@@ -57,3 +57,17 @@
   font-weight: 500;
   font-size: 18px;
 }
+
+.lang-button {
+  margin-left: 5px;
+  padding: 5px 8px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.lang-button:hover {
+  background-color: #ddd;
+}
