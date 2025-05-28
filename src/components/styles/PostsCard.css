@@ -53,6 +53,7 @@
   font-family: "Bebas Neue";
   font-weight: 400;
   margin: 0;
+  cursor: pointer;
 }
 
 .no-posts {

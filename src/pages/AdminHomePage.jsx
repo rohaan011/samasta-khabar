@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles/AdminHomePage.css";
 import BottomFooter from "../components/BottomFooter";
 import TopHeader from "../components/TopHeader";
@@ -6,6 +7,7 @@ import { ImNewspaper } from "react-icons/im";
 import PostsCard from "../components/PostsCard";
 import { POSTS, mainPost, sidePosts } from "../utils/posts";
 
+// Count posts by status
 const postCounts = {
   new: POSTS.filter((p) => p.status === "new").length,
   approved: POSTS.filter((p) => p.status === "approved").length,
@@ -16,7 +18,7 @@ const AdminHomePage = () => {
   const [activeTab, setActiveTab] = useState("new");
   const navigate = useNavigate();
 
-  const filteredPosts = ALL_POSTS.filter((post) => post.status === activeTab);
+  const filteredPosts = POSTS.filter((post) => post.status === activeTab);
 
   const handlePostClick = (postId) => {
     navigate(`/newsarticle/${postId}`);

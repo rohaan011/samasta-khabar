@@ -25,13 +25,15 @@ function NewsArticle() {
       <TopHeader />
 
       <main className="container">
-        <div className="mb-4">
-          <span className={`bg-${post.categoryClass}`}>{post.category}</span>
+        <div className="article-category">
+          <span className={`article-category bg-${post.categoryClass}`}>
+            {post.category}
+          </span>
         </div>
 
-        <div className="title">{post.title}</div>
+        <div className="article-title">{post.title}</div>
 
-        <div className="featured-image">
+        <div className="article-image">
           <img src={post.image} alt={post.alt} />
         </div>
         <div className="meta">

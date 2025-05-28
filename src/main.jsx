@@ -11,7 +11,7 @@ import AdminHomepage from "./pages/AdminHomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/signupPage.jsx";
 import Weather from "./components/Weather.jsx";
-import NewsArticle from "./pages/NewsArtice.jsx";
+import NewsArticle from "./pages/NewsArticle.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,7 +21,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/user" element={<UserHomePage />} />
         <Route path="/reporter" element={<ReporterHomePage />} />
-        <Route path="/newsarticle" element={<NewsArticle />} />
+        <Route path="/newsarticle/:id" element={<NewsArticle />} />
         <Route path="/reporternews" element={<ReporterPostPage />} />
         <Route path="/approval" element={<AdminApprovalPage />} />
         <Route path="/admin" element={<AdminHomepage />} />
