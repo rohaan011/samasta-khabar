@@ -1,5 +1,3 @@
-// src/data/posts.js
-
 export const POSTS = [
   {
     id: "1",
@@ -89,42 +87,8 @@ export const POSTS = [
   },
 ];
 
-export const mainPost = {
-  id: "1",
-  image:
-    "https://assets-cdn.kathmandupost.com/uploads/source/news/2023/news/polutionphoto-1699320782.jpg",
-  alt: "Air pollution in Kathmandu",
-  category: "Health",
-  categoryClass: "health",
-  date: "10 March 2025",
-  title: "AIR POLLUTION LEVELS RISE AGAIN IN KATHMANDU VALLEY",
-  content:
-    "Based on AQI, Kathmandu Valley ranks as the fifth most polluted city in the world today. Pakistan's Lahore tops the list. AQI of Lahore is 341. In addition, the AQI of India's Kolkata is ranked in the second place with an AQI of 248, and the AQI of Ulaanbaatar in Mongolia is 238.Also, the fourth most polluted city in India, New Delhi, has an AQI of 227 AQI. According to disaster management expert Dr. Dharmaraj Upreti, an AQI of zero to 50 is considered good and given a green signal.Also, an AQI of 51 to 100 indicates caution. An AQI of 101 to 150 is considered to cause breathing problems and is dangerous for heart patients. According to him, an AQI of 151 to 200 is considered unhealthy and air pollution above that is considered extremely unhealthy.The Air Quality Management Action Plan-2076 BS for the Kathmandu Valley has also stated that a situation where the AQI value is more than 300 as determined by the Government of Nepal will be treated as a disaster.In order to prevent the disaster, the Action Plan cal",
-};
+// Extract main post from POSTS array
+export const mainPost = POSTS[0];
 
-export const sidePosts = [
-  {
-    id: "7",
-    image:
-      "https://www.shutterstock.com/image-photo/stock-market-graph-trading-analysis-600nw-2231964577.jpg",
-    alt: "Stocks",
-    category: "Business",
-    categoryClass: "business",
-    date: "10 March 2025",
-    title: "NEPSE gains nearly 50 points as all sectors close green",
-    content:
-      "Based on AQI, Kathmandu Valley ranks as the fifth most polluted city in the world today. Pakistan's Lahore tops the list. AQI of Lahore is 341. In addition, the AQI of India's Kolkata is ranked in the second place with an AQI of 248, and the AQI of Ulaanbaatar in Mongolia is 238.Also, the fourth most polluted city in India, New Delhi, has an AQI of 227 AQI. According to disaster management expert Dr. Dharmaraj Upreti, an AQI of zero to 50 is considered good and given a green signal.Also, an AQI of 51 to 100 indicates caution. An AQI of 101 to 150 is considered to cause breathing problems and is dangerous for heart patients. According to him, an AQI of 151 to 200 is considered unhealthy and air pollution above that is considered extremely unhealthy.The Air Quality Management Action Plan-2076 BS for the Kathmandu Valley has also stated that a situation where the AQI value is more than 300 as determined by the Government of Nepal will be treated as a disaster.In order to prevent the disaster, the Action Plan cal",
-  },
-  {
-    id: "8",
-    image:
-      "https://cdn.britannica.com/51/173051-131-1ECD9C16/gold-metal-Stacks-bars-Blocks-money-mercantilism.jpg",
-    alt: "Gold price",
-    category: "Business",
-    categoryClass: "business",
-    date: "10 March 2025",
-    title: "Gold price soars by Rs 5,000 per tola",
-    content:
-      "Based on AQI, Kathmandu Valley ranks as the fifth most polluted city in the world today. Pakistan's Lahore tops the list. AQI of Lahore is 341. In addition, the AQI of India's Kolkata is ranked in the second place with an AQI of 248, and the AQI of Ulaanbaatar in Mongolia is 238.Also, the fourth most polluted city in India, New Delhi, has an AQI of 227 AQI. According to disaster management expert Dr. Dharmaraj Upreti, an AQI of zero to 50 is considered good and given a green signal.Also, an AQI of 51 to 100 indicates caution. An AQI of 101 to 150 is considered to cause breathing problems and is dangerous for heart patients. According to him, an AQI of 151 to 200 is considered unhealthy and air pollution above that is considered extremely unhealthy.The Air Quality Management Action Plan-2076 BS for the Kathmandu Valley has also stated that a situation where the AQI value is more than 300 as determined by the Government of Nepal will be treated as a disaster.In order to prevent the disaster, the Action Plan cal",
-  },
-];
+// Extract side posts from POSTS array
+export const sidePosts = POSTS.slice(3, 5); // Gets posts with id "7" and "8"

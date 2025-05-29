@@ -6,36 +6,6 @@
   padding: 10px;
 }
 
-.hero {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.hero-main {
-  flex: 2;
-  border-radius: 10px;
-}
-
-.hero-main .user-post-card,
-.hero-side .user-post-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border: 1px;
-}
-.hero-main .user-post-image {
-  width: 100%;
-  height: 100%;
-}
-.hero-side {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 /*Latest Section */
 .user-section-title {
   font-size: 42px;

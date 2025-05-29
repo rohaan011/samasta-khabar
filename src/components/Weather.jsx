@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../components/styles/Weather.css";
 import { IoSearch } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 
 const api = {
   key: "cd0ba1a5d5c3f451ea789947f8617bb1",
@@ -8,6 +9,7 @@ const api = {
 };
 
 function Weather() {
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
   const [weather, setWeather] = useState({});
 
@@ -21,7 +23,7 @@ function Weather() {
   return (
     <div className="weather-container">
       {/* Header */}
-      <h1>Temperature Today</h1>
+      <h1>{t("homepage.temperatureToday")}</h1>
       {/* serach box */}
       <div className="weather-search">
         <input

@@ -6,8 +6,11 @@ import Weather from "../components/Weather";
 import PostsCard from "../components/PostsCard";
 import { POSTS, mainPost, sidePosts } from "../utils/posts";
 import { useNavigate } from "react-router-dom";
+import HeroSection from "../components/HeroSection";
+import { useTranslation } from "react-i18next";
 
 function UserHomePage() {
+  const { t } = useTranslation();
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
@@ -38,52 +41,16 @@ function UserHomePage() {
   return (
     <div className="container">
       <UserHeader />
-      <section id="home" className="hero">
-        <div className="hero-main">
-          <div
-            key={mainPost.id}
-            className="user-post-card"
-            onClick={() => onArticleClick(mainPost.id)}
-          >
-            <div className="user-post-image">
-              <img src={mainPost.image} alt={mainPost.alt} />
-              <span className={`user-category-badge ${mainPost.categoryClass}`}>
-                {mainPost.category}
-              </span>
-            </div>
-            <div className="user-post-date">
-              <span className="user-calendar-icon">📅</span>
-              {mainPost.date}
-            </div>
-            <h3 className="user-post-title">{mainPost.title}</h3>
-          </div>
-        </div>
-
-        <div className="hero-side">
-          {sidePosts.map((post) => (
-            <div
-              key={post.id}
-              className="user-post-card"
-              onClick={() => onArticleClick(post.id)}
-            >
-              <div className="user-post-image">
-                <img src={post.image} alt={post.alt} />
-                <span className={`user-category-badge ${post.categoryClass}`}>
-                  {post.category}
-                </span>
-              </div>
-              <div className="user-post-date">
-                <span className="user-calendar-icon">📅</span>
-                {post.date}
-              </div>
-              <h3 className="user-post-title">{post.title}</h3>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div>
+        <HeroSection
+          mainPost={mainPost}
+          sidePosts={sidePosts}
+          onArticleClick={onArticleClick}
+        />
+      </div>
 
       <section className="photo-of-day">
-        <h3 className="text-of-day">PHOTO OF THE DAY</h3>
+        <h3 className="text-of-day">{t("homepage.photoOfTheDay")}</h3>
         <img
           src="https://images.travelandleisureasia.com/wp-content/uploads/sites/3/2024/01/19201004/kathmandu.jpeg"
           alt="Photo of the Day"
@@ -91,7 +58,7 @@ function UserHomePage() {
       </section>
 
       <section className="latest-news-section">
-        <h2 className="user-section-title">Latest News</h2>
+        <h2 className="user-section-title">{t("homepage.latestNews")}</h2>
 
         <PostsCard posts={POSTS} onPostClick={onArticleClick} />
       </section>
@@ -101,7 +68,7 @@ function UserHomePage() {
       </section>
 
       <section id="politics" className="Politics-news-section">
-        <h2 className="user-section-title">Politics</h2>
+        <h2 className="user-section-title">{t("header.politics")}</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Politics")}
           onPostClick={onArticleClick}
@@ -109,7 +76,7 @@ function UserHomePage() {
       </section>
 
       <section id="business" className="Business-news-section">
-        <h2 className="user-section-title">Business</h2>
+        <h2 className="user-section-title">{t("header.business")}</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Business")}
           onPostClick={onArticleClick}
@@ -117,7 +84,7 @@ function UserHomePage() {
       </section>
 
       <section id="health" className="Health-news-section">
-        <h2 className="user-section-title">Health</h2>
+        <h2 className="user-section-title">{t("header.health")}</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Health")}
           onPostClick={onArticleClick}
@@ -125,7 +92,7 @@ function UserHomePage() {
       </section>
 
       <section id="sports" className="Sports-news-section">
-        <h2 className="user-section-title">Sports</h2>
+        <h2 className="user-section-title">{t("header.sports")}</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Sports")}
           onPostClick={onArticleClick}
@@ -133,7 +100,7 @@ function UserHomePage() {
       </section>
 
       <section id="technology" className="Technology-news-section">
-        <h2 className="user-section-title">Technology</h2>
+        <h2 className="user-section-title">{t("header.technology")}</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Technology")}
           onPostClick={onArticleClick}
@@ -141,7 +108,7 @@ function UserHomePage() {
       </section>
 
       <section id="world" className="World-news-section">
-        <h2 className="user-section-title">World</h2>
+        <h2 className="user-section-title">{t("header.world")}</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "World")}
           onPostClick={onArticleClick}
@@ -149,7 +116,7 @@ function UserHomePage() {
       </section>
 
       <section id="lifestyle" className="Lifestyle-news-section">
-        <h2 className="user-section-title">Lifestyle</h2>
+        <h2 className="user-section-title">{t("header.lifestyle")}</h2>
         <PostsCard
           posts={POSTS.filter((post) => post.category === "Lifestyle")}
           onPostClick={onArticleClick}
